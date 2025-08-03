@@ -24,5 +24,5 @@ def get_data():
     return f"{data['prior_close']},{data['upper']},{data['lower']},{data['two_sigma_upper']},{data['two_sigma_lower']}"
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 10000))
+    port = int(os.environ.get("PORT", 5000))  # Render sets this automatically
     app.run(host="0.0.0.0", port=port)
