@@ -1,8 +1,9 @@
 from flask import Flask, request
 from flask_cors import CORS
+import os
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS for all routes
+CORS(app)
 
 ivol_data = {
     "GOOG": {
@@ -21,3 +22,7 @@ def get_data():
     if not data:
         return "na"
     return f"{data['prior_close']},{data['upper']},{data['lower']},{data['two_sigma_upper']},{data['two_sigma_lower']}"
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host="0.0.0.0", port=port)
